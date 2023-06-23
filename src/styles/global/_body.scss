@@ -1,0 +1,19 @@
+@import "fonts";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    font-weight: $font-weight-regular;
+    line-height: $line-height-base;
+}
+
+a, button:after {
+    line-height: 1;
+}
+
+div, span, button, a, input, textarea, pre {
+  font-family: 'Roboto', sans-serif;
+}
+
+textarea, pre {
+    white-space: pre-wrap;
+}
