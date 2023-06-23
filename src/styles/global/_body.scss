@@ -1,4 +1,5 @@
 @import "fonts";
+@import "colors";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body {
@@ -10,8 +11,9 @@ a, button:after {
     line-height: 1;
 }
 
-div, span, button, a, input, textarea, pre {
+div, span, button, a, input, textarea, pre, p {
   font-family: 'Roboto', sans-serif;
+  color: $c-white;
 }
 
 textarea, pre {

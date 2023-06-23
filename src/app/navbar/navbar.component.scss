@@ -1,0 +1,15 @@
+@import "colors";
+
+.navbar-container {
+  background-color: $c-black-80;
+}
+.mat-toolbar {
+  background-color: $c-black-80;
+  color: $c-white;
+}
+.mat-button {
+  color: $c-white;
+}
+.spacer {
+  flex: 1 1 auto;
+}

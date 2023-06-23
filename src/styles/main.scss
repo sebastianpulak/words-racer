@@ -1,2 +1,11 @@
 @import "global/global";
 @import "utils/utils";
+
+.main-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  max-width: 1600px;
+  margin-right: auto;
+  margin-left: auto;
+}
