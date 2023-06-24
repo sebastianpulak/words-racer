@@ -1,18 +1,20 @@
-# WordsRacer
+# Words Racer by Sebastian Pulak
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+## Play the game
 
-## Development server
+The game is available at https://sebastianpulak.github.io/words-racer/ \
+Main goal of the game is to measure your typing speed. In the future I'm hoping to add ability to compete against your friends in real time but for now it's only a single player.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## How to run locally
+
+1. Clone this repository using a command in terminal `git clone https://github.com/sebastianpulak/words-racer.git`
+2. Navigate to the project `cd words-racer`
+3. Install npm pacakges using `npm install`
+4. Start development server using `ng serve --open` - it should open in your default browser at the address `http://localhost:4200/`
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
