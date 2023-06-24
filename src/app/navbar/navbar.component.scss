@@ -5,10 +5,13 @@
 }
 .mat-toolbar {
   background-color: $c-black-80;
-  color: $c-white;
-}
-.mat-button {
-  color: $c-white;
+
+  & a:hover {
+    color: $c-yellow;
+    & .misc-links {
+      color: $c-yellow;
+    }
+  }
 }
 .spacer {
   flex: 1 1 auto;
