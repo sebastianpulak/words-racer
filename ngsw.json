@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1687623154551,
+  "timestamp": 1687623239193,
   "index": "https://sebastianpulak.github.io/words-racer/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "https://sebastianpulak.github.io/words-racer/index.html",
-        "https://sebastianpulak.github.io/words-racer/main.b98b45be52e14295.js",
+        "https://sebastianpulak.github.io/words-racer/main.12155116f7bc7814.js",
         "https://sebastianpulak.github.io/words-racer/manifest.webmanifest",
         "https://sebastianpulak.github.io/words-racer/polyfills.08c386db994982f9.js",
         "https://sebastianpulak.github.io/words-racer/runtime.38276c8d9686848d.js",
@@ -36,8 +36,8 @@
   "dataGroups": [],
   "hashTable": {
     "https://sebastianpulak.github.io/words-racer/assets/icons/favicon.png": "7c71c719c125b8c28eb198baaae6b9a41a9e29f2",
-    "https://sebastianpulak.github.io/words-racer/index.html": "ad424b7a6bd7b8543adeb940f52e5e5dc86ebe7a",
-    "https://sebastianpulak.github.io/words-racer/main.b98b45be52e14295.js": "5286870f5fdadaa61e2e8b40da046a12ca07e3b0",
+    "https://sebastianpulak.github.io/words-racer/index.html": "60c43710d44ca518856d8acc5f2313dc2d9420ac",
+    "https://sebastianpulak.github.io/words-racer/main.12155116f7bc7814.js": "8feb47a24d9c310d47116cf6f0ba3af32591d747",
     "https://sebastianpulak.github.io/words-racer/manifest.webmanifest": "3722cb296bae42c38d6a588ecfa0d71cb4a98891",
     "https://sebastianpulak.github.io/words-racer/polyfills.08c386db994982f9.js": "200235663202333a40e8a85a5ce8852c1406b91f",
     "https://sebastianpulak.github.io/words-racer/runtime.38276c8d9686848d.js": "c09faba5d7b9ce9bc233e3afc9779b1510027620",
