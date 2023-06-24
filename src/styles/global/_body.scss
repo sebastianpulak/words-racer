@@ -11,6 +11,10 @@ a, button:after {
     line-height: 1;
 }
 
+a {
+  cursor: pointer;
+}
+
 div, span, button, a, input, textarea, pre, p {
   font-family: 'Roboto', sans-serif;
   color: $c-white;
