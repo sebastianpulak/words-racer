@@ -1,0 +1,25 @@
+@import "fonts";
+@import "colors";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    font-weight: $font-weight-regular;
+    line-height: $line-height-base;
+}
+
+a, button:after {
+    line-height: 1;
+}
+
+a {
+  cursor: pointer;
+}
+
+div, span, button, a, input, textarea, pre, p {
+  font-family: 'Roboto', sans-serif;
+  color: $c-white;
+}
+
+textarea, pre {
+    white-space: pre-wrap;
+}

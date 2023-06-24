@@ -1,0 +1,29 @@
+@import "fonts";
+@import "colors";
+
+.welcome-container {
+  margin-top: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px;
+
+  &__play-button {
+    border-radius: 4px;
+    color: $c-yellow;
+    background-color: $c-black-80;
+    padding: 10px 5px;
+    text-align: center;
+    font-size: $font-size-28;
+    margin: auto;
+    width: 140px;
+    transition: all ease-in-out 200ms;
+
+    &:hover {
+      background-color: $c-yellow;
+      color: $c-black-80;
+    }
+  }
+}
