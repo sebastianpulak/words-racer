@@ -32,6 +32,17 @@ textarea {
     background: none;
 }
 
+/******* MOBILE NO BLUE BACKGROUND AFTER TAP ***********/
+input,
+textarea,
+button,
+select,
+div,
+i,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 /* Remove the stupid outer glow in Webkit */
 input:focus {
     outline: 0;
