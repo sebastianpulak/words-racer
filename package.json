@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "deploy": "ng build --base-href \"https://sebastianpulak.github.io/words-racer/\" && npx angular-cli-ghpages --dir=dist/words-racer"
+    "deploy": "ng build --configuration production --base-href \"https://sebastianpulak.github.io/words-racer/\" && npx angular-cli-ghpages --dir=dist/words-racer"
   },
   "private": true,
   "dependencies": {
