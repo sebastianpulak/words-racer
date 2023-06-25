@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1687725752517,
+  "timestamp": 1687726833032,
   "index": "https://sebastianpulak.github.io/words-racer/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "https://sebastianpulak.github.io/words-racer/347.0f8d1c74d8252c08.js",
         "https://sebastianpulak.github.io/words-racer/94.a096f010859ac455.js",
         "https://sebastianpulak.github.io/words-racer/index.html",
-        "https://sebastianpulak.github.io/words-racer/main.16fd08cef8023eec.js",
+        "https://sebastianpulak.github.io/words-racer/main.08915a167dfc6bbf.js",
         "https://sebastianpulak.github.io/words-racer/manifest.webmanifest",
         "https://sebastianpulak.github.io/words-racer/polyfills.bd6d290b34006d40.js",
         "https://sebastianpulak.github.io/words-racer/runtime.5ad18a6e1036fb7f.js",
@@ -42,8 +42,8 @@
     "https://sebastianpulak.github.io/words-racer/347.0f8d1c74d8252c08.js": "731d870e350ebf96ad50c49e884db0dcc2988205",
     "https://sebastianpulak.github.io/words-racer/94.a096f010859ac455.js": "c07ab3b8bd6f592f097ea3378c7c4fd03f9c9ba8",
     "https://sebastianpulak.github.io/words-racer/assets/icons/favicon.png": "7c71c719c125b8c28eb198baaae6b9a41a9e29f2",
-    "https://sebastianpulak.github.io/words-racer/index.html": "d03d7f0c303bf47aded4dce7e9c19d823ecdc5b5",
-    "https://sebastianpulak.github.io/words-racer/main.16fd08cef8023eec.js": "1c56664fa1a090ca8ef444f7bd64a75652fa40f7",
+    "https://sebastianpulak.github.io/words-racer/index.html": "76ebac03b1cadf0d00361622702c8e2f1430f01c",
+    "https://sebastianpulak.github.io/words-racer/main.08915a167dfc6bbf.js": "1e1f04543729d5a3e2dd62731d00aa9ae18d2c3b",
     "https://sebastianpulak.github.io/words-racer/manifest.webmanifest": "452dac5e3dbce75d2471df8c563083a58bf510a9",
     "https://sebastianpulak.github.io/words-racer/polyfills.bd6d290b34006d40.js": "fcac82f18e9cb7055d24cca1ff6d9f77d4d632fe",
     "https://sebastianpulak.github.io/words-racer/runtime.5ad18a6e1036fb7f.js": "dfbf5971684b670280f6f0ae0cc96e055f56ecb5",
