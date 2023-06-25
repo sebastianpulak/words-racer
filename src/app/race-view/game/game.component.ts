@@ -21,9 +21,10 @@ export class GameComponent implements OnInit {
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
   @Input() gameInProgress!: boolean;
   @Input() set randomWords(randomWords: Array<string>) {
-    console.log(randomWords);
     this._randomWords = randomWords;
     this.wordIndex = 0;
+    this.selectWord();
+    this.resetState();
   }
   _randomWords!: Array<string>;
   currentWordValue = '';
@@ -31,20 +32,27 @@ export class GameComponent implements OnInit {
   selectedWord!: string;
 
   ngOnInit() {
+    this.selectWord();
+  }
+
+  private selectWord() {
     this.selectedWord = this._randomWords[this.wordIndex];
+  }
+
+  private resetState() {
+    this.currentWordValue = '';
+    this.currentWordInput.nativeElement.value = '';
   }
 
   onWordValueChange(value: string) {
     if (!this.gameInProgress) {
-      this.currentWordValue = '';
-      this.currentWordInput.nativeElement.value = '';
+      this.resetState();
       return;
     }
     if (value === this.selectedWord) {
       this.wordIndex++;
       this.selectedWord = this._randomWords[this.wordIndex];
-      this.currentWordValue = '';
-      this.currentWordInput.nativeElement.value = '';
+      this.resetState();
     }
   }
 }
