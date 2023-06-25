@@ -3,5 +3,21 @@
 .race-view {
   &__container {
     @extend .l-container;
+
+    & .start-button {
+      border-radius: 4px;
+      color: $c-yellow;
+      background-color: $c-black-80;
+      padding: 10px 5px;
+      text-align: center;
+      font-size: $font-size-20;
+      width: 100px;
+      transition: all ease-in-out 200ms;
+
+      &:hover {
+        background-color: $c-yellow;
+        color: $c-black-80;
+      }
+    }
   }
 }

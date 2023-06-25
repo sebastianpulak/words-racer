@@ -1,0 +1,45 @@
+@import "utils";
+
+.typing-game {
+  --game-font-size: #{$font-size-22};
+  --game-mobile-font-size: #{$font-size-14};
+  margin-top: 20px;
+  border: 1px solid $c-yellow;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: var(--game-mobile-font-size);
+
+  @include mediaQueryMin($breakpoint-md) {
+    font-size: var(--game-font-size);
+    padding: 16px;
+  }
+
+  input[id=currentWordInput] {
+    margin-top: 8px;
+    font-size: var(--game-mobile-font-size);
+
+    @include mediaQueryMin($breakpoint-md) {
+      margin-top: 16px;
+      font-size: var(--game-font-size);
+    }
+
+  }
+
+  &__words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    @include mediaQueryMin($breakpoint-md) {
+      gap: 10px;
+    }
+
+    & .correct {
+      color: $c-green;
+    }
+
+    & .random {
+      margin-bottom: 4px;
+    }
+  }
+}

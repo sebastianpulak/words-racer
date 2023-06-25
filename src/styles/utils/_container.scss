@@ -1,8 +1,12 @@
 .l-container {
   display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.l-container__center {
+  @extend .l-container;
   align-content: center;
   justify-content: center;
   flex-wrap: wrap;
-  flex-direction: column;
-  margin-top: 20px;
 }
