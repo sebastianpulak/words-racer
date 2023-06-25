@@ -1,7 +1,7 @@
 @import "utils";
 
 .welcome-container {
-  @extend .l-container;
+  @extend .l-container__center;
   gap: 20px;
 
   &__play-button {

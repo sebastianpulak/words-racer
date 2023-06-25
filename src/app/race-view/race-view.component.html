@@ -1,5 +1,22 @@
 <div class="main-wrapper">
   <div class="race-view__container">
-    <h1>PLAY</h1>
+    <h1>Start racing</h1>
+    <h3>
+      Click <span class="u-text-color__yellow u-text-font-weight-500">Start</span>
+      when you're ready and wait for the countdown
+    </h3>
+    <h3>
+      You can restart the game by clicking the button <span class="u-text-color__yellow u-text-font-weight-500">Go!</span> again
+    </h3>
+    <button class="start-button"
+            [disabled]="countdownStarted"
+            (click)="startGame()">
+      {{countdownStarted ? (secondsRemaining$ | async) : gameInProgress ? 'Go!' : 'Start'}}
+    </button>
+
+    <app-game
+      [gameInProgress]="gameInProgress"
+      [randomWords]="randomWords">
+    </app-game>
   </div>
 </div>

@@ -1,0 +1,13 @@
+<div class="typing-game">
+  <div class="typing-game__words">
+    <ng-container *ngFor="let randomWord of _randomWords; let index = index;">
+      <p class="random" [class.correct]="wordIndex > index">{{ randomWord }}</p>
+    </ng-container>
+  </div>
+  <input matInput #currentWordInput
+         placeholder="Start typing"
+         type="text"
+         id="currentWordInput"
+         [ngModel]="currentWordValue"
+         (ngModelChange)="onWordValueChange($event)">
+</div>
