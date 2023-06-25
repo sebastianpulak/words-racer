@@ -6,4 +6,11 @@
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
 }
