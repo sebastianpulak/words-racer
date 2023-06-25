@@ -4,8 +4,12 @@
     <h3>Click <span class="u-text-color__yellow u-text-font-weight-500">Start</span>
       when you're ready and wait for the countdown
     </h3>
-    <a class="start-button">Start</a>
+    <button class="start-button"
+            [disabled]="gameInProgress"
+            (click)="startGame()">
+      {{countdownStarted ? (secondsRemaining$ | async) : gameInProgress ? 'Go!' : 'Start'}}
+    </button>
 
-    <app-game></app-game>
+    <app-game [gameInProgress]="gameInProgress"></app-game>
   </div>
 </div>
