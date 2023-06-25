@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'race',
     loadComponent: () => import('./race-view/race-view.component').then(m => m.RaceViewComponent)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+  },
+  {
+    path: 'ranking',
+    loadComponent: () => import('./ranking/ranking.component').then(m => m.RankingComponent)
   }
 ];
 
