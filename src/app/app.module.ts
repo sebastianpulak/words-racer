@@ -6,13 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavbarComponent } from "./navbar/navbar.component";
-import { RaceViewComponent } from './race-view/race-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
-    RaceViewComponent
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
