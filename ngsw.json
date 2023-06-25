@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1687724976219,
+  "timestamp": 1687725358152,
   "index": "https://sebastianpulak.github.io/words-racer/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "https://sebastianpulak.github.io/words-racer/347.0f8d1c74d8252c08.js",
         "https://sebastianpulak.github.io/words-racer/94.a096f010859ac455.js",
         "https://sebastianpulak.github.io/words-racer/index.html",
-        "https://sebastianpulak.github.io/words-racer/main.b379a57089b23c02.js",
+        "https://sebastianpulak.github.io/words-racer/main.16fd08cef8023eec.js",
         "https://sebastianpulak.github.io/words-racer/manifest.webmanifest",
         "https://sebastianpulak.github.io/words-racer/polyfills.bd6d290b34006d40.js",
         "https://sebastianpulak.github.io/words-racer/runtime.b2bae15ecf2fab7f.js",
@@ -42,9 +42,9 @@
     "https://sebastianpulak.github.io/words-racer/347.0f8d1c74d8252c08.js": "731d870e350ebf96ad50c49e884db0dcc2988205",
     "https://sebastianpulak.github.io/words-racer/94.a096f010859ac455.js": "c07ab3b8bd6f592f097ea3378c7c4fd03f9c9ba8",
     "https://sebastianpulak.github.io/words-racer/assets/icons/favicon.png": "7c71c719c125b8c28eb198baaae6b9a41a9e29f2",
-    "https://sebastianpulak.github.io/words-racer/index.html": "5755655fe184364e258be0908412a0134a1d4b9e",
-    "https://sebastianpulak.github.io/words-racer/main.b379a57089b23c02.js": "938bd9f3cd5d0aba89cf5116f529878441ebb3d7",
-    "https://sebastianpulak.github.io/words-racer/manifest.webmanifest": "fff61ca8ce014c40f0348d57b44c7e51eaa7ca5b",
+    "https://sebastianpulak.github.io/words-racer/index.html": "5045c66864f667bd8c47b717c6d14f0e3cdb8f01",
+    "https://sebastianpulak.github.io/words-racer/main.16fd08cef8023eec.js": "1c56664fa1a090ca8ef444f7bd64a75652fa40f7",
+    "https://sebastianpulak.github.io/words-racer/manifest.webmanifest": "452dac5e3dbce75d2471df8c563083a58bf510a9",
     "https://sebastianpulak.github.io/words-racer/polyfills.bd6d290b34006d40.js": "fcac82f18e9cb7055d24cca1ff6d9f77d4d632fe",
     "https://sebastianpulak.github.io/words-racer/runtime.b2bae15ecf2fab7f.js": "1da3adebe5c0cb80c0ee3b271e6000d372337919",
     "https://sebastianpulak.github.io/words-racer/styles.6771bd0111ade6b7.css": "5c732ab9dc28d05835978642392d2903667bab88"
