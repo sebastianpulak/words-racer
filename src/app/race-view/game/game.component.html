@@ -1,6 +1,6 @@
 <div class="typing-game">
   <div class="typing-game__words">
-    <ng-container *ngFor="let randomWord of randomWords; let index = index;">
+    <ng-container *ngFor="let randomWord of _randomWords; let index = index;">
       <p class="random" [class.correct]="wordIndex > index">{{ randomWord }}</p>
     </ng-container>
   </div>

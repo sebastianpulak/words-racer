@@ -1,8 +1,8 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import { generate } from "random-words";
+
 
 @Component({
   selector: 'app-game',
@@ -17,13 +17,22 @@ import { generate } from "random-words";
   ]
 })
 
-export class GameComponent {
+export class GameComponent implements OnInit {
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
   @Input() gameInProgress!: boolean;
+  @Input() set randomWords(randomWords: Array<string>) {
+    console.log(randomWords);
+    this._randomWords = randomWords;
+    this.wordIndex = 0;
+  }
+  _randomWords!: Array<string>;
   currentWordValue = '';
-  randomWords: Array<string> = generate(20);
   wordIndex = 0;
-  selectedWord = this.randomWords[this.wordIndex];
+  selectedWord!: string;
+
+  ngOnInit() {
+    this.selectedWord = this._randomWords[this.wordIndex];
+  }
 
   onWordValueChange(value: string) {
     if (!this.gameInProgress) {
@@ -33,7 +42,7 @@ export class GameComponent {
     }
     if (value === this.selectedWord) {
       this.wordIndex++;
-      this.selectedWord = this.randomWords[this.wordIndex];
+      this.selectedWord = this._randomWords[this.wordIndex];
       this.currentWordValue = '';
       this.currentWordInput.nativeElement.value = '';
     }
