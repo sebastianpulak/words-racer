@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {WelcomeComponent} from "./welcome/welcome.component";
-import {RaceViewComponent} from "./race-view/race-view.component";
 
 const routes: Routes = [
   {
@@ -10,7 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'race',
-    component: RaceViewComponent,
+    loadComponent: () => import('./race-view/race-view.component').then(m => m.RaceViewComponent)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+  },
+  {
+    path: 'ranking',
+    loadComponent: () => import('./ranking/ranking.component').then(m => m.RankingComponent)
   }
 ];
 

@@ -1,0 +1,9 @@
+$breakpoint-s: 576px;
+$breakpoint-md: 768px;
+$breakpoint-l: 992px;
+
+@mixin mediaQueryMin($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
+    @content
+  }
+}

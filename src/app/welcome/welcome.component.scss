@@ -1,13 +1,7 @@
-@import "fonts";
-@import "colors";
+@import "utils";
 
 .welcome-container {
-  margin-top: 20px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
+  @extend .l-container;
   gap: 20px;
 
   &__play-button {

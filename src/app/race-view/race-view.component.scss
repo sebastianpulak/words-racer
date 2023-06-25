@@ -1,0 +1,7 @@
+@import "utils";
+
+.race-view {
+  &__container {
+    @extend .l-container;
+  }
+}
