@@ -1,8 +1,9 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {GameStateService} from "../service/game-state.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-game',
@@ -17,7 +18,7 @@ import {GameStateService} from "../service/game-state.service";
   ]
 })
 
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
   constructor(public gameState: GameStateService) {
   }
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
@@ -26,14 +27,16 @@ export class GameComponent implements OnInit {
   currentWordValue = '';
   wordIndex = 0;
   selectedWord!: string;
+  subscription = new Subscription();
 
   ngOnInit() {
-    this.gameState.getRandomWords().subscribe((randomWords: Array<string>) => {
+    this.subscription.add(
+      this.gameState.getRandomWords().subscribe((randomWords: Array<string>) => {
       this._randomWords = randomWords;
       this.wordIndex = 0;
       this.selectWord();
       this.resetState();
-    })
+    }));
   }
 
   private selectWord() {
@@ -42,7 +45,9 @@ export class GameComponent implements OnInit {
 
   private resetState() {
     this.currentWordValue = '';
-    this.currentWordInput.nativeElement.value = '';
+    if (this.currentWordInput) {
+      this.currentWordInput.nativeElement.value = '';
+    }
   }
 
   onWordValueChange(value: string) {
@@ -56,5 +61,9 @@ export class GameComponent implements OnInit {
       this.resetState();
       this.gameState.setProgress(this.wordIndex / this._randomWords.length * 100);
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

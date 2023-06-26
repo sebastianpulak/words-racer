@@ -1,3 +1,4 @@
+<p class="game-wpm" *ngIf="gameState.wpm$ | async as wpm">WPM: {{ wpm }}</p>
 <div class="game-score">
   <div [style.width]="(gameState.progress$ | async) + '%'" class="game-score__progress"></div>
 </div>
