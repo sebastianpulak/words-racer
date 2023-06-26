@@ -13,6 +13,7 @@ export class GameStateService {
 
   setRandomWords(randomWords: Array<string>): void {
     this.randomWords$.next(randomWords);
+    this.progress$.next(0);
     this.wpm$.next(null);
   }
 
