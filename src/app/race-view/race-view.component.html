@@ -14,9 +14,10 @@
       {{countdownStarted ? (secondsRemaining$ | async) : gameInProgress ? 'Go!' : 'Start'}}
     </button>
 
+    <app-game-score></app-game-score>
+
     <app-game
-      [gameInProgress]="gameInProgress"
-      [randomWords]="randomWords">
+      [gameInProgress]="gameInProgress">
     </app-game>
   </div>
 </div>

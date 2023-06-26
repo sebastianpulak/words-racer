@@ -4,6 +4,8 @@ import {GameComponent} from "./game/game.component";
 import {map, Subscription, takeLast, takeWhile, timer} from "rxjs";
 import {AsyncPipe} from "@angular/common";
 import { generate } from "random-words";
+import {GameStateService} from "./service/game-state.service";
+import {GameScoreComponent} from "./game-score/game-score.component";
 
 @Component({
   selector: 'app-race-view',
@@ -12,13 +14,15 @@ import { generate } from "random-words";
   imports: [
     MatInputModule,
     GameComponent,
-    AsyncPipe
+    AsyncPipe,
+    GameScoreComponent
   ],
   standalone: true
 })
 export class RaceViewComponent implements OnDestroy {
+  constructor(private gameState: GameStateService) {
+  }
   subscription = new Subscription();
-  randomWords: Array<string> = generate(20);
   gameInProgress = false;
   countdownStarted = false;
   secondsRemaining$ = timer(1, 1000).pipe(
@@ -33,7 +37,7 @@ export class RaceViewComponent implements OnDestroy {
         takeWhile(n => n >= 1)
       );
       this.gameInProgress = false;
-      this.randomWords = generate(20);
+      this.gameState.setRandomWords(generate(20));
     }
     this.subscription.add(this.secondsRemaining$.pipe(takeLast(1)).subscribe(() => {
       this.gameInProgress = true;
