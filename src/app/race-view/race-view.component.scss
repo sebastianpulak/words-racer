@@ -20,5 +20,46 @@
         color: $c-black-80;
       }
     }
+
+    & .button-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+        & .fake-tooltip {
+          position: relative;
+          opacity: 1;
+          background: $c-black-80;
+          border-radius: 0.25em;
+          padding: 0.75em;
+          margin-left: 12px;
+          display: block;
+          z-index: 2;
+          color: white;
+          height: fit-content;
+          width: fit-content;
+          transition: opacity ease-in-out 300ms;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 50%;                         // half way down (vertical center).
+            margin-top: -8px;
+            left: -15px;
+            border: solid 8px transparent;
+            border-right-color: $c-black-80;
+            z-index: 1;
+          }
+        }
+
+      & .hidden {
+        opacity: 0;
+      }
+    }
+    & .game-wpm {
+      margin-top: 15px;
+      font-size: $font-size-24;
+      font-weight: $font-weight-medium;
+    }
   }
 }

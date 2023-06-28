@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
@@ -22,6 +22,7 @@ export class GameComponent implements OnInit, OnDestroy {
   constructor(public gameState: GameStateService) {
   }
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
+  @Output() showTooltip = new EventEmitter<boolean>();
   @Input() gameInProgress!: boolean;
   _randomWords!: Array<string>;
   currentWordValue = '';
@@ -53,6 +54,7 @@ export class GameComponent implements OnInit, OnDestroy {
   onWordValueChange(value: string) {
     if (!this.gameInProgress) {
       this.resetState();
+      this.showTooltip.emit();
       return;
     }
     if (value === this.selectedWord) {

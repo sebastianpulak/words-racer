@@ -5,7 +5,7 @@
     </ng-container>
   </div>
   <input matInput #currentWordInput
-         placeholder="Start typing"
+         [placeholder]="!gameInProgress ? 'Start typing' : selectedWord"
          type="text"
          id="currentWordInput"
          [ngModel]="currentWordValue"

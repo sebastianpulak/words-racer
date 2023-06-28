@@ -2,10 +2,11 @@ import {Component, OnDestroy} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {GameComponent} from "./game/game.component";
 import {map, Subscription, takeLast, takeWhile, timer} from "rxjs";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, NgIf} from "@angular/common";
 import { generate } from "random-words";
 import {GameStateService} from "./service/game-state.service";
 import {GameScoreComponent} from "./game-score/game-score.component";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const COUNTDOWN_TIME = 3;
 
@@ -17,22 +18,26 @@ const COUNTDOWN_TIME = 3;
     MatInputModule,
     GameComponent,
     AsyncPipe,
-    GameScoreComponent
+    GameScoreComponent,
+    MatTooltipModule,
+    NgIf
   ],
   standalone: true
 })
 export class RaceViewComponent implements OnDestroy {
-  constructor(private gameState: GameStateService) {
+  constructor(public gameState: GameStateService) {
   }
   subscription = new Subscription();
   gameInProgress = false;
   countdownStarted = false;
+  showTooltip = false;
   secondsRemaining$ = timer(1, 1000).pipe(
     map(n => COUNTDOWN_TIME - n),
   takeWhile(n => n >= 1)
 );
 
   startGame() {
+    this.showTooltip = false;
     if (this.gameInProgress) {
       this.secondsRemaining$ = timer(0, 1000).pipe(
         map(n => COUNTDOWN_TIME - n),
@@ -42,11 +47,18 @@ export class RaceViewComponent implements OnDestroy {
       this.gameState.setRandomWords(generate(10));
     }
     this.subscription.add(this.secondsRemaining$.pipe(takeLast(1)).subscribe(() => {
+      this.showTooltip = false;
       this.gameInProgress = true;
       this.countdownStarted = false;
       this.gameState.startTime = new Date().getTime();
     }));
     this.countdownStarted = true;
+  }
+
+  triggerTooltip() {
+    if (!this.countdownStarted) {
+      this.showTooltip = true;
+    }
   }
 
   ngOnDestroy() {

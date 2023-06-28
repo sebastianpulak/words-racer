@@ -8,16 +8,23 @@
     <h3>
       You can restart the game by clicking the button <span class="u-text-color__yellow u-text-font-weight-500">Go!</span> again
     </h3>
-    <button class="start-button"
-            [disabled]="countdownStarted"
-            (click)="startGame()">
-      {{countdownStarted ? (secondsRemaining$ | async) : gameInProgress ? 'Go!' : 'Start'}}
-    </button>
+    <div class="button-group">
+      <button class="start-button"
+              [disabled]="countdownStarted"
+              (click)="startGame();">
+        {{countdownStarted ? (secondsRemaining$ | async) : gameInProgress ? 'Go!' : 'Start'}}
+      </button>
+      <div class="fake-tooltip" [class.hidden]="!showTooltip">
+        Click here to start
+      </div>
+    </div>
+
 
     <app-game-score></app-game-score>
-
     <app-game
-      [gameInProgress]="gameInProgress">
+      [gameInProgress]="gameInProgress"
+      (showTooltip)="triggerTooltip()">
     </app-game>
+    <p class="game-wpm" *ngIf="gameState.wpm$ | async as wpm">WPM: {{ wpm }}</p>
   </div>
 </div>
