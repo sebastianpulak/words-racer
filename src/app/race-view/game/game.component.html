@@ -1,7 +1,7 @@
 <div class="typing-game">
   <div class="typing-game__words">
     <ng-container *ngFor="let randomWord of (gameState.randomWords$ | async); let index = index;">
-      <p class="random" [class.correct]="wordIndex > index">{{ randomWord }}</p>
+      <p class="random" [class.highlight]="wordIndex === index && gameInProgress" [class.correct]="wordIndex > index">{{ randomWord }}</p>
     </ng-container>
   </div>
   <input matInput #currentWordInput
