@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1688325484093,
+  "timestamp": 1688326388986,
   "index": "https://sebastianpulak.github.io/words-racer/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "https://sebastianpulak.github.io/words-racer/676.2916156403546b4f.js",
         "https://sebastianpulak.github.io/words-racer/94.a096f010859ac455.js",
         "https://sebastianpulak.github.io/words-racer/index.html",
-        "https://sebastianpulak.github.io/words-racer/main.7e4f3f0dbff0bf93.js",
+        "https://sebastianpulak.github.io/words-racer/main.713fb5126996c7ab.js",
         "https://sebastianpulak.github.io/words-racer/manifest.webmanifest",
         "https://sebastianpulak.github.io/words-racer/polyfills.bd6d290b34006d40.js",
         "https://sebastianpulak.github.io/words-racer/runtime.8a7e59f23a2f8bcb.js",
@@ -42,8 +42,8 @@
     "https://sebastianpulak.github.io/words-racer/676.2916156403546b4f.js": "a3bba6b2afec37b31fd082b37eb70dba9eeae803",
     "https://sebastianpulak.github.io/words-racer/94.a096f010859ac455.js": "c07ab3b8bd6f592f097ea3378c7c4fd03f9c9ba8",
     "https://sebastianpulak.github.io/words-racer/assets/icons/favicon.png": "7c71c719c125b8c28eb198baaae6b9a41a9e29f2",
-    "https://sebastianpulak.github.io/words-racer/index.html": "31a91ebfde8aeaf2c295654d01cb22592eab9380",
-    "https://sebastianpulak.github.io/words-racer/main.7e4f3f0dbff0bf93.js": "d80667a31cb2c573d9bc043a2144999756003f6b",
+    "https://sebastianpulak.github.io/words-racer/index.html": "bf41560ac4649041af8ba5d68b2e7463b7b0e428",
+    "https://sebastianpulak.github.io/words-racer/main.713fb5126996c7ab.js": "563e7a7130d34b88131ae4fdb6cb742f79c5a392",
     "https://sebastianpulak.github.io/words-racer/manifest.webmanifest": "2c1fdccf1a07444e869ffb6bec96317a928670f1",
     "https://sebastianpulak.github.io/words-racer/polyfills.bd6d290b34006d40.js": "fcac82f18e9cb7055d24cca1ff6d9f77d4d632fe",
     "https://sebastianpulak.github.io/words-racer/runtime.8a7e59f23a2f8bcb.js": "926bd548bf95bc2c774063136fdf1da04f13bf50",
