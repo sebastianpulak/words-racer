@@ -22,6 +22,7 @@
 
     <app-game-score></app-game-score>
     <app-game
+      [countdownStarted]="countdownStarted"
       [gameInProgress]="gameInProgress"
       (showTooltip)="triggerTooltip()">
     </app-game>

@@ -24,6 +24,11 @@ export class GameComponent implements OnInit, OnDestroy {
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
   @Output() showTooltip = new EventEmitter<boolean>();
   @Input() gameInProgress!: boolean;
+  @Input() set countdownStarted(started: boolean) {
+    if (started) {
+      this.currentWordInput.nativeElement.focus();
+    }
+  }
   _randomWords!: Array<string>;
   currentWordValue = '';
   wordIndex = 0;
