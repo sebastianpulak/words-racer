@@ -66,7 +66,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this.wordIndex++;
       this.selectWord();
       this.resetState();
-      this.gameState.setProgress(this.wordIndex / this._randomWords.length * 100);
+      this.gameState.setProgress(this.wordIndex / this._randomWords.length * 100, this.wordIndex);
     }
   }
 
