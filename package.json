@@ -1,6 +1,6 @@
 {
   "name": "words-racer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "deploy": "ng build --configuration production --base-href \"https://sebastianpulak.github.io/words-racer/\" && npx angular-cli-ghpages --dir=dist/words-racer"
+    "deploy": "ng deploy --base-href=https://sebastianpulak.github.io/words-racer/"
   },
   "private": true,
   "dependencies": {
@@ -40,7 +40,7 @@
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "5.59.7",
     "@typescript-eslint/parser": "5.59.7",
-    "angular-cli-ghpages": "^0.6.2",
+    "angular-cli-ghpages": "^1.0.6",
     "eslint": "^8.40.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, map, Observable, scan, Subject} from 'rxjs';
+import {BehaviorSubject, map, Observable, scan} from 'rxjs';
 import {generate} from "random-words";
 
 @Injectable({
