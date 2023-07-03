@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, map, Observable, scan} from 'rxjs';
 import {generate} from "random-words";
+export const WORDS_AMOUNT = 20;
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameStateService {
-  randomWords$ = new BehaviorSubject<Array<string>>(generate(10));
+  randomWords$ = new BehaviorSubject<Array<string>>(generate(WORDS_AMOUNT));
   progress$ = new BehaviorSubject<number>(0);
   gameCompleted$ = new BehaviorSubject<boolean>(false);
   startTime!: number;

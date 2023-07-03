@@ -4,7 +4,7 @@ import {GameComponent} from "./game/game.component";
 import {map, Subscription, takeLast, takeWhile, timer} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import { generate } from "random-words";
-import {GameStateService} from "./service/game-state.service";
+import {GameStateService, WORDS_AMOUNT} from "./service/game-state.service";
 import {GameScoreComponent} from "./game-score/game-score.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
@@ -51,7 +51,7 @@ export class RaceViewComponent implements OnInit, OnDestroy {
         takeWhile(n => n >= 1)
       );
       this.gameInProgress = false;
-      this.gameState.setRandomWords(generate(10));
+      this.gameState.setRandomWords(generate(WORDS_AMOUNT));
     }
     this.subscription.add(this.secondsRemaining$.pipe(takeLast(1)).subscribe(() => {
       this.showTooltip = false;
