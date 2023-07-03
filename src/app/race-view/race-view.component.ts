@@ -38,7 +38,7 @@ export class RaceViewComponent implements OnInit, OnDestroy {
 );
 
   ngOnInit() {
-    this.subscription.add(this.gameState.gameCompleted$.subscribe(isGameCompleted => {
+    this.subscription.add(this.gameState.gameCompleted$.subscribe((isGameCompleted: boolean) => {
         this.gameCompleted = isGameCompleted;
     }));
   }
