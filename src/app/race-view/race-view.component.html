@@ -26,6 +26,6 @@
       [gameInProgress]="gameInProgress"
       (showTooltip)="triggerTooltip()">
     </app-game>
-    <p class="game-wpm">Your WPM: {{ gameState.wpm$ | async }}</p>
+    <p class="game-wpm" [class.underline]="gameCompleted">Your WPM: {{ gameState.wpm$ | async }}</p>
   </div>
 </div>

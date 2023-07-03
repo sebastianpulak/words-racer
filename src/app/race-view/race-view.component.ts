@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {GameComponent} from "./game/game.component";
 import {map, Subscription, takeLast, takeWhile, timer} from "rxjs";
@@ -24,17 +24,24 @@ const COUNTDOWN_TIME = 3;
   ],
   standalone: true
 })
-export class RaceViewComponent implements OnDestroy {
+export class RaceViewComponent implements OnInit, OnDestroy {
   constructor(public gameState: GameStateService) {
   }
   subscription = new Subscription();
   gameInProgress = false;
   countdownStarted = false;
   showTooltip = false;
+  gameCompleted = false;
   secondsRemaining$ = timer(1, 1000).pipe(
     map(n => COUNTDOWN_TIME - n),
   takeWhile(n => n >= 1)
 );
+
+  ngOnInit() {
+    this.subscription.add(this.gameState.gameCompleted$.subscribe(isGameCompleted => {
+        this.gameCompleted = isGameCompleted;
+    }));
+  }
 
   startGame() {
     this.showTooltip = false;

@@ -57,9 +57,28 @@
       }
     }
     & .game-wpm {
+      position: relative;
       margin-top: 15px;
       font-size: $font-size-24;
       font-weight: $font-weight-medium;
+      width: fit-content;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 3px;
+        bottom: -5px;
+        left: 0;
+        background-color: $c-yellow;
+        transition: transform 0.3s ease;
+      }
+
+      &.underline::after {
+        transform: scaleX(1);
+      }
     }
   }
 }
