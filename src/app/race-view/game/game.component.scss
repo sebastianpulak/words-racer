@@ -34,8 +34,18 @@
       gap: 10px;
     }
 
+
+
     & .correct {
       color: $c-green;
+    }
+
+    & .highlight {
+      color: $c-yellow;
+    }
+
+    & .wrong {
+      color: $c-red;
     }
 
     & .random {

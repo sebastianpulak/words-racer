@@ -1,8 +1,9 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-
+import {GameStateService} from "../service/game-state.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-game',
@@ -17,34 +18,59 @@ import {CommonModule} from "@angular/common";
   ]
 })
 
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
+  constructor(public gameState: GameStateService) {
+  }
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
+  @Output() showTooltip = new EventEmitter<boolean>();
   @Input() gameInProgress!: boolean;
-  @Input() set randomWords(randomWords: Array<string>) {
-    console.log(randomWords);
-    this._randomWords = randomWords;
-    this.wordIndex = 0;
+  @Input() set countdownStarted(started: boolean) {
+    if (started) {
+      this.currentWordInput.nativeElement.focus();
+    }
   }
   _randomWords!: Array<string>;
   currentWordValue = '';
   wordIndex = 0;
   selectedWord!: string;
+  subscription = new Subscription();
 
   ngOnInit() {
+    this.subscription.add(
+      this.gameState.getRandomWords().subscribe((randomWords: Array<string>) => {
+      this._randomWords = randomWords;
+      this.wordIndex = 0;
+      this.selectWord();
+      this.resetState();
+    }));
+  }
+
+  private selectWord() {
     this.selectedWord = this._randomWords[this.wordIndex];
+  }
+
+  private resetState() {
+    this.currentWordValue = '';
+    if (this.currentWordInput) {
+      this.currentWordInput.nativeElement.value = '';
+    }
   }
 
   onWordValueChange(value: string) {
     if (!this.gameInProgress) {
-      this.currentWordValue = '';
-      this.currentWordInput.nativeElement.value = '';
+      this.resetState();
+      this.showTooltip.emit();
       return;
     }
     if (value === this.selectedWord) {
       this.wordIndex++;
-      this.selectedWord = this._randomWords[this.wordIndex];
-      this.currentWordValue = '';
-      this.currentWordInput.nativeElement.value = '';
+      this.selectWord();
+      this.resetState();
+      this.gameState.setProgress(this.wordIndex / this._randomWords.length * 100, this.wordIndex);
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
