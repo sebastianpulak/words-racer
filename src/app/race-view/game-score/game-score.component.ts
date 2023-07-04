@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import {GameStateService} from "../service/game-state.service";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {getGameStateService} from "../service/game-state.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-game-score',
   templateUrl: './game-score.component.html',
   styleUrls: ['./game-score.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
     NgIf
@@ -13,6 +14,5 @@ import {AsyncPipe, NgIf} from "@angular/common";
   standalone: true
 })
 export class GameScoreComponent {
-  constructor(public gameState: GameStateService) {
-  }
+  gameState = getGameStateService();
 }

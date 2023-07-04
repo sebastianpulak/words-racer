@@ -1,16 +1,18 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {SwUpdate} from "@angular/service-worker";
+import {interval} from "rxjs";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit, OnDestroy {
-  constructor(private swUpdate: SwUpdate) {
-  }
+export class AppComponent implements OnInit {
+  swUpdate = inject(SwUpdate);
   title = 'words-racer';
-  updateInterval!: number;
+  updateInterval$ = interval(30 * 1000).pipe(takeUntilDestroyed());
 
   ngOnInit() {
     this.checkForUpdates();
@@ -18,21 +20,20 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public checkForUpdates(): void {
     this.checkForNewVersion();
-    this.updateInterval = setInterval(() => this.checkForNewVersion(), 60 * 1000);
+    this.updateInterval$.subscribe(() => {
+      this.checkForNewVersion();
+    })
   }
 
   checkForNewVersion = async () => {
     try {
-      // Check if Service Worker is supported by the Browser
       if (this.swUpdate.isEnabled) {
-        // Check if new version is available
         const isNewVersion = await this.swUpdate.checkForUpdate();
         if (isNewVersion) {
-          // Check if new version is activated
           const isNewVersionActivated = await this.swUpdate.activateUpdate();
-
-          // Reload the application with new version if new version is activated
-          if (isNewVersionActivated) window.location.reload();
+          if (isNewVersionActivated) {
+            window.location.reload();
+          }
         }
       }
     } catch (error) {
@@ -44,9 +45,4 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   };
 
-  ngOnDestroy() {
-    if (this.updateInterval) {
-      clearInterval(this.updateInterval);
-    }
-  }
 }

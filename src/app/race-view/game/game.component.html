@@ -3,14 +3,14 @@
     <ng-container *ngFor="let randomWord of (gameState.randomWords$ | async); let index = index;">
       <p class="random"
          [class.wrong]="wordIndex === index && currentWordValue.length >= selectedWord.length"
-         [class.highlight]="wordIndex === index && gameInProgress"
+         [class.highlight]="wordIndex === index && (gameState.gameInProgress$ | async) === true"
          [class.correct]="wordIndex > index">
         {{ randomWord }}
       </p>
     </ng-container>
   </div>
   <input matInput #currentWordInput
-         [placeholder]="!gameInProgress ? 'Get ready' : selectedWord"
+         [placeholder]="(gameState.gameInProgress$ | async) === false ? 'Get ready' : selectedWord"
          type="text"
          id="currentWordInput"
          [(ngModel)]="currentWordValue"
