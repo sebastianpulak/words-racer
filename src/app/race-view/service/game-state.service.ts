@@ -3,6 +3,7 @@ import {BehaviorSubject, map, scan} from 'rxjs';
 import {generate} from "random-words";
 
 export const WORDS_AMOUNT = 20;
+export const WORDS_AMOUNT_ARRAY: Array<number> = [5, 10, 15, 20, 25, 30];
 
 export const getGameStateService = () => {
   return inject(GameStateService);
@@ -12,6 +13,7 @@ export const getGameStateService = () => {
   providedIn: 'root'
 })
 export class GameStateService {
+  wordsAmount$ = new BehaviorSubject<number>(WORDS_AMOUNT);
   randomWords$ = new BehaviorSubject<Array<string>>(generate(WORDS_AMOUNT));
   progress$ = new BehaviorSubject<number>(0);
   gameCompleted$ = new BehaviorSubject<boolean>(false);

@@ -1,13 +1,16 @@
-import {ChangeDetectionStrategy, Component, DestroyRef, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {GameComponent} from "./game/game.component";
-import {map, takeLast, takeWhile, timer} from "rxjs";
+import {map, take, takeLast, takeWhile, timer} from "rxjs";
 import {AsyncPipe, CommonModule} from "@angular/common";
-import { generate } from "random-words";
-import {getGameStateService, WORDS_AMOUNT} from "./service/game-state.service";
+import {generate} from "random-words";
+import {getGameStateService, WORDS_AMOUNT, WORDS_AMOUNT_ARRAY} from "./service/game-state.service";
 import {GameScoreComponent} from "./game-score/game-score.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {FormsModule} from "@angular/forms";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectChange, MatSelectModule} from "@angular/material/select";
 
 const COUNTDOWN_TIME = 3;
 
@@ -16,6 +19,7 @@ const COUNTDOWN_TIME = 3;
   templateUrl: './race-view.component.html',
   styleUrls: ['./race-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [
     CommonModule,
     MatInputModule,
@@ -23,11 +27,15 @@ const COUNTDOWN_TIME = 3;
     AsyncPipe,
     GameScoreComponent,
     MatTooltipModule,
+    FormsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   standalone: true
 })
 export class RaceViewComponent {
   gameState = getGameStateService();
+  wordsAmountArray = [...WORDS_AMOUNT_ARRAY];
   countdownStarted = false;
   showTooltip = false;
   firstRace = true;
@@ -41,11 +49,17 @@ export class RaceViewComponent {
   startGame() {
     this.showTooltip = false;
     if (!this.firstRace) {
-      this.gameState.setRandomWords(generate(WORDS_AMOUNT));
+      this.gameState.wordsAmount$.pipe(
+        take(1)
+      ).subscribe((wordsAmount: number) => {
+        this.gameState.setRandomWords(generate(wordsAmount));
+      })
     }
     this.firstRace = false;
     this.gameState.gameInProgress$.next(false);
-    this.gameState.gameInProgress$.subscribe((inProgress: boolean) => {
+    this.gameState.gameInProgress$.pipe(
+      takeUntilDestroyed(this.destroyRef),
+    ).subscribe((inProgress: boolean) => {
       if (inProgress) {
         this.secondsRemaining$ = timer(0, 1000).pipe(
           map(n => COUNTDOWN_TIME - n),
@@ -70,6 +84,18 @@ export class RaceViewComponent {
     if (!this.countdownStarted) {
       this.showTooltip = true;
     }
+  }
+
+  changeWordsAmount(amount: MatSelectChange) {
+    const wordsAmount = amount.value;
+    this.gameState.wordsAmount$.next(wordsAmount);
+    this.gameState.setRandomWords(generate(wordsAmount));
+    this.gameState.gameInProgress$.next(false);
+    this.secondsRemaining$ = timer(1, 1000).pipe(
+      map(n => COUNTDOWN_TIME - n),
+      takeWhile(n => n >= 1)
+    );
+    this.firstRace = true;
   }
 
 }
