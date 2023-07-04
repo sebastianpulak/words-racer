@@ -35,13 +35,13 @@ export class GameComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   ngOnInit() {
-    this.subscription.add(
-      this.gameState.getRandomWords().subscribe((randomWords: Array<string>) => {
+    this.subscription =
+      this.gameState.randomWords$.subscribe((randomWords: Array<string>) => {
       this._randomWords = randomWords;
       this.wordIndex = 0;
       this.selectWord();
       this.resetState();
-    }));
+    });
   }
 
   private selectWord() {

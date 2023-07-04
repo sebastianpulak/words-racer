@@ -11,7 +11,7 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 export class AppComponent implements OnInit {
   swUpdate = inject(SwUpdate);
   title = 'words-racer';
-  updateInterval$ = interval(60 * 1000).pipe(takeUntilDestroyed());
+  updateInterval$ = interval(30 * 1000).pipe(takeUntilDestroyed());
 
   ngOnInit() {
     this.checkForUpdates();

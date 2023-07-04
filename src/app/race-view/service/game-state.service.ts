@@ -24,17 +24,13 @@ export class GameStateService {
     this.gameCompleted$.next(false);
   }
 
-  getRandomWords(): Observable<Array<string>> {
-    return this.randomWords$.asObservable();
-  }
-
   setProgress(progress: number, wordIndex: number): void {
     if (progress >= 100) {
       this.gameCompleted$.next(true);
     }
     const totalTime = new Date().getTime() - this.startTime;
     const minutesPassed = totalTime / (1000 * 60);
-    this.getRandomWords().pipe(
+    this.randomWords$.pipe(
       map((words: string[]) => words.slice(0, wordIndex).join('')),
       map((combinedString: string) => combinedString.length),
       scan((accumulator: number, length: number) => accumulator + length, 0)
