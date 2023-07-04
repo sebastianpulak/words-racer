@@ -12,7 +12,7 @@
       <button class="start-button"
               [disabled]="countdownStarted"
               (click)="startGame();">
-        {{countdownStarted ? (secondsRemaining$ | async) : gameInProgress ? 'Go!' : 'Start'}}
+        {{countdownStarted ? (secondsRemaining$ | async) : (gameState.gameInProgress$ | async) === true ? 'Go!' : 'Start'}}
       </button>
       <div class="fake-tooltip" [class.hidden]="!showTooltip">
         Click here to start
@@ -21,7 +21,6 @@
     <app-game-score></app-game-score>
     <app-game
       [countdownStarted]="countdownStarted"
-      [gameInProgress]="gameInProgress"
       (showTooltip)="triggerTooltip()">
     </app-game>
     <p class="game-wpm" [ngClass]="{'underline': (gameState.gameCompleted$ | async)}">Your WPM: {{ gameState.wpm$ | async }}</p>

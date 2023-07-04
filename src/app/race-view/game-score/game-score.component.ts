@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {getGameStateService} from "../service/game-state.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 
@@ -6,6 +6,7 @@ import {AsyncPipe, NgIf} from "@angular/common";
   selector: 'app-game-score',
   templateUrl: './game-score.component.html',
   styleUrls: ['./game-score.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
     NgIf

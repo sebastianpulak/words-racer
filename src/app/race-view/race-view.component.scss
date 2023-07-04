@@ -27,6 +27,7 @@
       align-items: center;
 
         & .fake-tooltip {
+          cursor: default;
           position: relative;
           opacity: 1;
           background: $c-black-80;
@@ -43,7 +44,7 @@
           &:before {
             content: "";
             position: absolute;
-            top: 50%;                         // half way down (vertical center).
+            top: 50%;
             margin-top: -8px;
             left: -15px;
             border: solid 8px transparent;

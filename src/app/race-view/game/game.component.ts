@@ -1,16 +1,25 @@
-import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component, DestroyRef,
+  ElementRef,
+  EventEmitter, inject,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {getGameStateService} from "../service/game-state.service";
-import {Subscription} from "rxjs";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
   standalone: true,
-
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatInputModule,
     FormsModule,
@@ -18,11 +27,10 @@ import {Subscription} from "rxjs";
   ]
 })
 
-export class GameComponent implements OnInit, OnDestroy {
+export class GameComponent implements OnInit {
   gameState = getGameStateService();
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
   @Output() showTooltip = new EventEmitter<boolean>();
-  @Input() gameInProgress!: boolean;
   @Input() set countdownStarted(started: boolean) {
     if (started) {
       this.currentWordInput.nativeElement.focus();
@@ -32,16 +40,18 @@ export class GameComponent implements OnInit, OnDestroy {
   currentWordValue = '';
   wordIndex = 0;
   selectedWord!: string;
-  subscription = new Subscription();
+  inProgress = false;
+  destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.subscription =
-      this.gameState.randomWords$.subscribe((randomWords: Array<string>) => {
-      this._randomWords = randomWords;
-      this.wordIndex = 0;
-      this.selectWord();
-      this.resetState();
-    });
+      this.gameState.randomWords$.pipe(
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe((randomWords: Array<string>) => {
+          this._randomWords = randomWords;
+          this.wordIndex = 0;
+          this.selectWord();
+          this.resetState();
+    })
   }
 
   private selectWord() {
@@ -56,7 +66,13 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   onWordValueChange(value: string) {
-    if (!this.gameInProgress) {
+    this.gameState.gameInProgress$.pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((inProgress: boolean) => {
+        this.inProgress = inProgress;
+    })
+
+    if (!this.inProgress) {
       this.resetState();
       this.showTooltip.emit();
       return;
@@ -69,7 +85,4 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }
