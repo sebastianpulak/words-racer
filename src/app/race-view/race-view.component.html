@@ -8,6 +8,12 @@
     <h3>
       You can restart the game by clicking the button <span class="u-text-color__yellow u-text-font-weight-500">Go!</span> again
     </h3>
+    <mat-form-field class="words-amount">
+      <mat-label>Select amount of words</mat-label>
+      <mat-select [disabled]="countdownStarted" (selectionChange)="changeWordsAmount($event)">
+        <mat-option *ngFor="let wordValue of wordsAmountArray" [value]="wordValue">{{wordValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="button-group">
       <button class="start-button"
               [disabled]="countdownStarted"
