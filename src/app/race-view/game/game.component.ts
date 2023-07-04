@@ -2,7 +2,7 @@ import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, V
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import {GameStateService} from "../service/game-state.service";
+import {getGameStateService} from "../service/game-state.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -19,8 +19,7 @@ import {Subscription} from "rxjs";
 })
 
 export class GameComponent implements OnInit, OnDestroy {
-  constructor(public gameState: GameStateService) {
-  }
+  gameState = getGameStateService();
   @ViewChild('currentWordInput', {static: false}) currentWordInput!: ElementRef<HTMLInputElement>;
   @Output() showTooltip = new EventEmitter<boolean>();
   @Input() gameInProgress!: boolean;

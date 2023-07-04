@@ -4,7 +4,7 @@ import {GameComponent} from "./game/game.component";
 import {map, Subscription, takeLast, takeWhile, timer} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import { generate } from "random-words";
-import {GameStateService, WORDS_AMOUNT} from "./service/game-state.service";
+import {getGameStateService, WORDS_AMOUNT} from "./service/game-state.service";
 import {GameScoreComponent} from "./game-score/game-score.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
@@ -25,8 +25,7 @@ const COUNTDOWN_TIME = 3;
   standalone: true
 })
 export class RaceViewComponent implements OnInit, OnDestroy {
-  constructor(public gameState: GameStateService) {
-  }
+  gameState = getGameStateService();
   subscription = new Subscription();
   gameInProgress = false;
   countdownStarted = false;

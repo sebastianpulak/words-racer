@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {GameStateService} from "../service/game-state.service";
+import {Component} from '@angular/core';
+import {getGameStateService} from "../service/game-state.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({
@@ -13,6 +13,5 @@ import {AsyncPipe, NgIf} from "@angular/common";
   standalone: true
 })
 export class GameScoreComponent {
-  constructor(public gameState: GameStateService) {
-  }
+  gameState = getGameStateService();
 }

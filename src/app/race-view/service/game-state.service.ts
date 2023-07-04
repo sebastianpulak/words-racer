@@ -1,7 +1,11 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {BehaviorSubject, map, Observable, scan} from 'rxjs';
 import {generate} from "random-words";
 export const WORDS_AMOUNT = 20;
+
+export const getGameStateService = () => {
+  return inject(GameStateService);
+}
 
 @Injectable({
   providedIn: 'root'
